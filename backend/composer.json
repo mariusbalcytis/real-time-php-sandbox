@@ -1,0 +1,8 @@
+{
+    "require": {
+        "pusher/pusher-php-server": "^3.0"
+    },
+    "autoload": {
+        "files": ["functions.php"]
+    }
+}

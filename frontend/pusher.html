@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Real time PHP example: pusher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid">
+    <h2>Pusher</h2>
+    <div class="alert alert-info" id="myText"></div>
+</div>
+
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script>
+    fetch('/backend/get.php').then(response => response.json()).then(data => myText.innerText = data.text);
+    const pusher = new Pusher('1e150f1ce6ee03af0d34', {
+        cluster: 'eu',
+        encrypted: true
+    });
+
+    const channel = pusher.subscribe('data-channel');
+    channel.bind('data-changed', function(data) {
+        myText.innerText = data.text;
+    });
+</script>
+
+</body>
+</html>
