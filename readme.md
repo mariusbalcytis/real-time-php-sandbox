@@ -3,6 +3,9 @@
 ## Running
 
 ```bash
+cd backend
+composer install
+cd ..
 docker-compose up
 ```
 
